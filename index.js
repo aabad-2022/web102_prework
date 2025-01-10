@@ -29,28 +29,29 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
-    games.forEach(game => {
-            // create a new div element, which will become the game card
-            const gameCard = document.createElement("div");
+    for (let i = 0; i < games.length; i++) {
+        const game = games[i];
 
-            // add the class game-card to the list
-            gameCard.classList.add("game-card");
+        // create a new div element, which will become the game card
+        const gameCard = document.createElement("div");
 
-            // set the inner HTML using a template literal to display some info 
-            // about each game
-            // TIP: if your images are not displaying, make sure there is space
-            // between the end of the src attribute and the end of the tag ("/>")
-            gameCard.innerHTML = `
-            <img src="${game.img}" class="game-img" />
-            <h2>${game.name}</h2>
-            <p>${game.description}</p>
-            <p>${game.pledged} / ${game.goal}, ${game.backers} backers</p>
-            `;
+        // add the class game-card to the list
+        gameCard.classList.add("game-card");
 
-            // append the game to the games-container
-            document.getElementById("games-container").appendChild(gameCard);
-        }
-    );  
+        // set the inner HTML using a template literal to display some info 
+        // about each game
+        // TIP: if your images are not displaying, make sure there is space
+        // between the end of the src attribute and the end of the tag ("/>")
+        gameCard.innerHTML = `
+        <img src="${game.img}" class="game-img" />
+        <h2>${game.name}</h2>
+        <p>${game.description}</p>
+        <p>${game.pledged} / ${game.goal}, ${game.backers} backers</p>
+        `;
+
+        // append the game to the games-container
+        document.getElementById("games-container").appendChild(gameCard);
+    }
 }
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
